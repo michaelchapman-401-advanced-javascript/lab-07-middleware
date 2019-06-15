@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = (req, res, next) => {
+module.exports = (err, req, res) => {
   console.log('error');
-  next(err);
-}
+  res.status(500).send('Felipe broke in our server');
+};

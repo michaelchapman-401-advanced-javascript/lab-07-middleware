@@ -13,9 +13,11 @@ const app = express();
 
 const PORT = process.env.PORT || 8080;
 
+app.use(errorHandler);
 app.use(addTime);
 app.use(consoleLog);
 app.use('/d', raiseError);
+
 app.use(routes);
 
 app.get('/a', (req,res) => {
@@ -23,15 +25,14 @@ app.get('/a', (req,res) => {
 });
 
 app.get('/b', square(7), (req,res) => {
-  res.status(200).send(req.number);
+  res.status(200).send(req.number.toString());
 });
 
 app.get('*', fourohfour, (req, res) => {
-  console.log('404 not found');
   res.send('404 not found');
 });
 
-app.use(errorHandler);
+
 
 app.listen(PORT, () => console.log(`Listening on ${PORT}`));
 

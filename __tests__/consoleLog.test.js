@@ -3,7 +3,7 @@
 const consoleLog = require('../middleware/consoleLog.js');
 const supertest = require('supertest');
 const mockRequest = supertest(consoleLog);
-
+console.log(mockRequest);
 describe('middleware', () => {
   describe('consoleLog module', () => {
     it('Should run console.log once when called', () => {
@@ -12,7 +12,7 @@ describe('middleware', () => {
       let req = {
         method: 'get',
         path: '/a',
-        requestTime: 'time'
+        requestTime: 'time',
       };
       let res = {};
       let next = jest.fn(() => true);
